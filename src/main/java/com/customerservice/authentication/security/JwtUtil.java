@@ -1,4 +1,4 @@
-package com.customerservice.security;
+package com.customerservice.authentication.security;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;

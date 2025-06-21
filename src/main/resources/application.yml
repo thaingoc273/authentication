@@ -2,13 +2,13 @@ spring:
   application:
     name: authentication
   datasource:
-    url: jdbc:mysql://localhost:3310/mydb
+    url: jdbc:mysql://localhost:3311/authentication_db
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
     show-sql: false
     properties:
       hibernate:
@@ -18,6 +18,7 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
     validate-on-migrate: true
+    cleanDisabled: false
 server:
   port: 8085
 logging:
@@ -25,9 +26,9 @@ logging:
     org:
       springframework: INFO
       hibernate:
-            SQL: OFF
-      flywaydb: INFO   
+            SQL: INFO
+      flywaydb: ERROR   
 jwt:
-  secret: your_secret_key_here
+  secret: your_secret_key_here_need_to_have_more_than_32_characters
   expirationTime: 3600000
 
