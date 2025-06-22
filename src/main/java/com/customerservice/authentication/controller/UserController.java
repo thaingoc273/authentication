@@ -1,25 +1,32 @@
 package com.customerservice.authentication.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import com.customerservice.authentication.entity.User;
-import com.customerservice.authentication.repository.UserRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.customerservice.authentication.dto.UserResponseDto;
 import com.customerservice.authentication.service.UserService;
-import com.customerservice.authentication.dto.SignUpRequestDto;
-import com.customerservice.authentication.dto.SignUpResponseDto;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.access.AccessDeniedException;
+
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("api/users")
 public class UserController {
-    
-    @Autowired
-    private UserService userService;
+    final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
 
-    @PostMapping("/signup")
-    public ResponseEntity<SignUpResponseDto> registerUser(@RequestBody SignUpRequestDto signUpRequest) {
-
-        return ResponseEntity.ok().body(userService.registerUser(signUpRequest));
-    }    
-} 
+    @GetMapping
+    public ResponseEntity<List<UserResponseDto>> getAllUsers() {
+        List<UserResponseDto> response = userService.getAllUsers();
+        return ResponseEntity.ok(response);
+    }
+}
