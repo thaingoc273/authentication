@@ -29,4 +29,16 @@ public class UserController {
         List<UserResponseDto> response = userService.getAllUsers();
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/profile")
+    public ResponseEntity<UserResponseDto> getUserProfile(@RequestParam String username) {
+        try{
+            UserResponseDto response = userService.findByUsernameWithRoles(username);
+            return ResponseEntity.ok(response);
+        } catch (SecurityException e) {
+            throw new AccessDeniedException("You are not authorized to access this user's information.");
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("User not found with username: " + username);
+        }       
+    }
 }
