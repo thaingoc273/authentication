@@ -16,12 +16,14 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @NoArgsConstructor       
 @AllArgsConstructor
 @Table(name = "users")
+@EqualsAndHashCode(exclude = "roles")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

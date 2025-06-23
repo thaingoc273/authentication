@@ -1,4 +1,4 @@
-package com.customerservice.security;
+package com.customerservice.authentication.security;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
@@ -24,6 +24,5 @@ public class JwtProperties {
     }
     public void setExpirationTime(long expirationTime) {
         this.expirationTime = expirationTime;
-    }
-    
+    }    
 }

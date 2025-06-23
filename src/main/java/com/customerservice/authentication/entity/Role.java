@@ -10,12 +10,14 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "roles")
+@EqualsAndHashCode(exclude = "users")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
