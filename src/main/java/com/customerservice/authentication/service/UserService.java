@@ -46,7 +46,11 @@ public class UserService {
             .orElseThrow(() -> new IllegalArgumentException("Authentication user not found"));
         
 
-        if (currentUser.getRoles().stream().anyMatch(role -> role.getRoleCode().equals("ADMIN") || role.getRoleCode().equals("MANAGER"))) {
+        if (currentUser.getRoles().stream().anyMatch(role -> role.getRoleCode().equals("ADMIN"))) {
+            return toUserResponseDto(user);
+        }
+
+        if (currentUser.getRoles().stream().anyMatch(role -> role.getRoleCode().equals("MANAGER")) && (user.getRoles().stream().allMatch(role -> role.getRoleCode().equals("USER")))) {
             return toUserResponseDto(user);
         }
 
