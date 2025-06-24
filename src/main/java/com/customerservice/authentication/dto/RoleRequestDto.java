@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class RoleRequestDto {
-    private String roleCode;
-    private String roleType;
+  private String roleCode;
+  private String roleType;
 }

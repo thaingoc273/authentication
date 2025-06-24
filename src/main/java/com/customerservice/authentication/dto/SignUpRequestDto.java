@@ -1,7 +1,6 @@
 package com.customerservice.authentication.dto;
 
 import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignUpRequestDto {
-    private String username;
-    private String password;
-    private String email;
-    private List<RoleRequestDto> roles;
-} 
+  private String username;
+  private String password;
+  private String email;
+  private List<RoleRequestDto> roles;
+}
