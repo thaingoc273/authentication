@@ -2,9 +2,12 @@ spring:
   application:
     name: authentication
   datasource:
-    url: jdbc:mysql://localhost:3311/authentication_db
-    username: root
-    password: root
+    # url: jdbc:mysql://localhost:3311/authentication_db
+    # username: root
+    # password: root
+    url: jdbc:mysql://db-test2.cjkocssqm352.eu-central-1.rds.amazonaws.com:3306/sampledb
+    username: admin
+    password: Linhhiep273
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -19,6 +22,9 @@ spring:
     baseline-on-migrate: true
     validate-on-migrate: true
     cleanDisabled: false
+  docker:
+    compose:
+      enabled: false
 server:
   port: 8085
 logging:

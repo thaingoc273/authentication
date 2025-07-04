@@ -21,24 +21,24 @@ services:
   #     timeout: 5s
   #     retries: 5
 
-  mysql:
-    image: mysql:8.0.42
-    container_name: authentication-mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=authentication_db
-      - MYSQL_USER=demouser
-      - MYSQL_PASSWORD=demopassword
-    ports:
-      - "3311:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+  # mysql:
+  #   image: mysql:8.0.42
+  #   container_name: authentication-mysql
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=root
+  #     - MYSQL_DATABASE=authentication_db
+  #     - MYSQL_USER=demouser
+  #     - MYSQL_PASSWORD=demopassword
+  #   ports:
+  #     - "3311:3306"
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
 
 volumes:
   mysql_data:
